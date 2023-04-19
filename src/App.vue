@@ -13,10 +13,8 @@ export default {
   methods: {
     searchMovie() {
       //console.log(this.movie);
-      this.store.fetchMovies(this.store.urlBaseMovie + this.movie); //recupero i results dei film
-      this.store.fetchTvShows(this.store.urlBaseTvShow + this.movie); //recupero i results delle serie
-      this.store.results = this.store.results.concat(this.store.resultTvShows); //li unisco
-      console.log(this.store.results);
+      this.store.fetchMovies(this.store.urlBase + this.movie);
+      //console.log(this.store.results);
     },
   },
 }
