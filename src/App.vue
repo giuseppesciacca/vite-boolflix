@@ -4,20 +4,26 @@ import { store } from './store.js'
 export default {
   data() {
     return {
-      store
+      store,
+      movie: '',
     }
   },
   methods: {
-
+    searchMovie() {
+      console.log(this.movie);
+      this.store.fetchMovies(this.store.urlBase + this.movie);
+    }
   },
   mounted() {
-    this.store.fetchMovies(this.store.urlBase + this.store.movie);
+    this.store.fetchMovies(this.store.urlBase);
   },
 }
 </script>
 
 <template>
-  <h1>Looking for 'Mario'...</h1>
+  <h1>Looking for '{{ this.movie }}'...</h1>
+  <input v-model="movie" type="text" name="" id="" placeholder="Movies">
+  <button @click="searchMovie()">Search</button>
   <ol>
     <li class="my-3" v-for="result in this.store.results">
       <ul>
