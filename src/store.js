@@ -9,7 +9,7 @@ export const store = reactive({
             .get(url)
             .then(response => {
                 //console.log(response.data);
-                //console.log(response.data.results);
+                console.log(response.data.results);
                 this.results = response.data.results;
             }).catch(error => {
                 console.error(error.message);
