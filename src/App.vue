@@ -14,14 +14,16 @@ export default {
     searchMovie() {
       //console.log(this.movie);
       this.store.fetchMovies(this.store.urlBase + this.movie);
-      //console.log(this.store.results);
+      console.log(this.store.results);
     },
   },
 }
 </script>
 
 <template>
-  <h1 class="m-3">Looking for '{{ this.movie }}'...</h1>
+  <h1 class="m-3">Booflix</h1>
+
+  <h2 class="m-3">Looking for '{{ this.movie }}'...</h2>
 
   <input class="m-3" v-model="movie" type="text" name="" id="" placeholder="Movies">
   <button @click="searchMovie()">Search</button>
