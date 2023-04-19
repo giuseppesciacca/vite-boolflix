@@ -6,7 +6,8 @@ export default {
     return {
       store,
       movie: '',
-      urlFlag: 'https://flagcdn.com/20x15/'
+      urlFlag: 'https://flagcdn.com/20x15/',
+      urlPathBase: 'https://image.tmdb.org/t/p/w342/'
     }
   },
   methods: {
@@ -31,13 +32,16 @@ export default {
     <li class="my-3" v-for="result in this.store.results">
       <ul>
         <li><strong>Title: {{ result.title ? result.title : result.name }}</strong></li>
+        <li>
+          <img :src="urlPathBase + result.poster_path" :alt="result.title ? result.title : result.name">
+        </li>
         <li v-if="result.original_title || result.original_name">Original Title: {{ result.original_title ?
           result.original_title : result.original_name }}</li>
         <li>Language: <img
             :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language || result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
             :alt="result.original_language">
         </li>
-        <li>Vote: {{ result.vote_average }}/10</li>
+        <li>Vote: {{ Math.ceil(result.vote_average / 2) }}/5</li>
       </ul>
     </li>
   </ol>
