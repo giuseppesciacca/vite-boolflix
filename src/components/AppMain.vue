@@ -37,27 +37,27 @@ export default {
                     </p>
 
                     <p v-else-if="Math.ceil((result.vote_average) / 2) == 1"><strong>Vote:</strong>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star" v-for="i in 4"></i>
+                        <font-awesome-icon :icon="['fas', 'star']" />
+                        <font-awesome-icon :icon="['far', 'star']" v-for="i in 4" />
                     </p>
 
                     <p v-else-if="Math.ceil((result.vote_average) / 2) == 2"><strong>Vote:</strong>
-                        <i v-for="i in 2" class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star" v-for="i in 3"></i>
+                        <font-awesome-icon v-for="i in 2" :icon="['fas', 'star']" />
+                        <font-awesome-icon v-for="i in 3" :icon="['far', 'star']" />
                     </p>
 
                     <p v-else-if="Math.ceil((result.vote_average) / 2) == 3"><strong>Vote:</strong>
-                        <i v-for="i in 3" class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star" v-for="i in 2"></i>
+                        <font-awesome-icon v-for="i in 3" :icon="['fas', 'star']" />
+                        <font-awesome-icon v-for="i in 2" :icon="['far', 'star']" />
                     </p>
 
                     <p v-else-if="Math.ceil((result.vote_average) / 2) == 4"><strong>Vote:</strong>
-                        <i v-for="i in 4" class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
+                        <font-awesome-icon v-for="i in 4" :icon="['fas', 'star']" />
+                        <font-awesome-icon :icon="['far', 'star']" />
                     </p>
 
                     <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Vote:</strong>
-                        <i v-for="i in 5" class="fa-solid fa-star"></i>
+                        <font-awesome-icon v-for="i in 5" :icon="['fas', 'star']" />
                     </p>
 
                     <p v-else><strong>Vote:</strong> {{ Math.ceil(result.vote_average / 2) }}/5</p>
