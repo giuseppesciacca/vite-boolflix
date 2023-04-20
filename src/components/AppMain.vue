@@ -11,7 +11,7 @@ export default {
         }
     },
     mounted() {
-        this.store.fetchMoviesAndTvShow(this.store.urlBase + 'a') //initial page with a as search
+        this.store.fetchMoviesAndTvShow(' https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate') //initial page with a as search
     }
 }
 </script>

@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import axios from 'axios'
 
 export const store = reactive({
-    urlBase: 'https://api.themoviedb.org/3/search/multi?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&query=',
+    urlBase: 'https://api.themoviedb.org/3/search/multi?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&query=',
     results: [],
     fetchMoviesAndTvShow(url) {
         axios
