@@ -8,10 +8,11 @@ export default {
             store,
             urlFlag: 'https://flagcdn.com/20x15/',
             urlPathBase: 'https://image.tmdb.org/t/p/w342/',
+            urlDiscovery: 'https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
         }
     },
     mounted() {
-        this.store.fetchMoviesAndTvShow(' https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate') //initial page with a as search
+        this.store.fetchMoviesAndTvShow(this.urlDiscovery) //initial page 'discovery' ordered by popularity desc.
     }
 }
 </script>
@@ -34,7 +35,7 @@ export default {
                             result.original_title : result.original_name }}
                     </p>
 
-                    <p v-if="result.original_language" class=""><strong>Lingua:</strong> <img
+                    <p v-if="result.original_language"><strong>Lingua:</strong> <img
                             :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language && result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
                             :alt="result.original_language"></p>
 
