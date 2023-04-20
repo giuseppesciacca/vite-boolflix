@@ -16,7 +16,7 @@ export default {
 <template>
     <main>
         <div class="row py-3 m-0">
-            <div class="col-4 g-3" v-for="result in this.store.results">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
                 <img class="img-fluid card-img" :src="urlPathBase + result.poster_path"
                     :alt="result.title ? result.title : result.name">
 
@@ -82,20 +82,26 @@ main {
         background-color: black;
         height: 100%;
         border: 2px solid white;
+
+        p {
+            margin: 0.5rem;
+        }
     }
 
     .card-img {
         border: 2px solid white;
+        height: 100%;
+        object-fit: cover;
     }
 
     .card-img:hover,
-    .col-4:hover .card-img {
+    [class^="col"]:hover .card-img {
         display: none;
         z-index: 1;
     }
 
     .card-img:hover+.description,
-    .col-4:hover .description {
+    [class^="col"]:hover .description {
         display: block !important;
     }
 }
