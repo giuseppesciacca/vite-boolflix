@@ -74,7 +74,7 @@ export default {
 main {
     background-color: #434343;
 
-    i {
+    .fa-star {
         color: orange;
     }
 }

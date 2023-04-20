@@ -10,9 +10,9 @@ export default {
         }
     },
     methods: {
-        searchMovie() {
+        searchMovieAndTvShow() {
             //console.log(this.movie);
-            this.store.fetchMovies(this.store.urlBase + this.movie);
+            this.store.fetchMoviesAndTvShow(this.store.urlBase + this.movie);
             console.log(this.store.results);
         },
     },
@@ -23,11 +23,11 @@ export default {
     <header>
         <div class="nav justify-content-between align-items-center">
             <div class="header_left">
-                <h1 class="p-3 fw-bold">BOOLFLIX</h1>
+                <h1 class="p-3 fw-bold">BoolfliX</h1>
             </div>
 
             <div class="header_right pe-3">
-                <input @keyup.enter="searchMovie()" class="m-3" v-model="movie" type="text" name="" id=""
+                <input @keyup.enter="searchMovieAndTvShow()" class="m-3" v-model="movie" type="text" name="" id=""
                     placeholder="Search">
             </div>
 
@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 header {
     background-color: black;
+    height: 90px;
 
     h1 {
         color: red;
