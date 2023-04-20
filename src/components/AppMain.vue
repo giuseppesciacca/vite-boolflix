@@ -35,7 +35,7 @@ export default {
                     </p>
 
                     <p v-if="result.original_language" class=""><strong>Lingua:</strong> <img
-                            :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language || result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
+                            :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language && result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
                             :alt="result.original_language"></p>
 
                     <div v-if="result.vote_average">
@@ -66,8 +66,6 @@ export default {
                         <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Voto:</strong>
                             <font-awesome-icon v-for="i in 5" :icon="['fas', 'star']" />
                         </p>
-
-                        <p v-else><strong>Voto:</strong> {{ Math.ceil(result.vote_average / 2) }}/5</p>
                     </div>
                     <!-- /VOTI -->
 

@@ -30,7 +30,7 @@ export default {
 
             <div class="header_right pe-3 pe-sm-5">
                 <input @keyup.enter="searchMovieAndTvShow()" class="m-3" v-model="movie" type="text" name="" id=""
-                    placeholder="Cerca Film e Serie Tv">
+                    placeholder="Cerca tra i film e le serie TV">
             </div>
 
         </div>
