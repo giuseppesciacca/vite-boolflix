@@ -10,12 +10,15 @@ export default {
             urlPathBase: 'https://image.tmdb.org/t/p/w342/',
         }
     },
+    mounted() {
+        this.store.fetchMoviesAndTvShow(this.store.urlBase + 'a') //initial page with a as search
+    }
 }
 </script>
 
 <template>
     <main>
-        <div class="row py-3 m-0">
+        <div v-if="this.store.results.length > 0" class="row py-3 m-0">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
                 <img class="img-fluid card-img" :src="urlPathBase + result.poster_path" s
                     onerror="this.onerror=null; this.src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'"
@@ -71,6 +74,10 @@ export default {
                 </div>
             </div>
         </div>
+
+        <div v-else>
+            <h2 class="text-center p-5 fw-1">Risultato inesistente</h2>
+        </div>
     </main>
 </template>
 
@@ -78,18 +85,8 @@ export default {
 main {
     background-color: #434343;
 
-    .fa-star {
-        color: orange;
-    }
-
-    .description {
-        background-color: black;
-        height: 100%;
-        border: 2px solid white;
-
-        p {
-            margin: 0.5rem;
-        }
+    h2 {
+        color: red;
     }
 
     .card-img {
@@ -108,5 +105,20 @@ main {
     [class^="col"]:hover .description {
         display: block !important;
     }
+
+    .description {
+        background-color: black;
+        height: 100%;
+        border: 2px solid white;
+
+        p {
+            margin: 0.5rem;
+
+            .fa-star {
+                color: orange;
+            }
+        }
+    }
+
 }
 </style>

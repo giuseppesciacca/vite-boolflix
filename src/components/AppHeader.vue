@@ -14,6 +14,7 @@ export default {
             //console.log(this.movie);
             this.store.fetchMoviesAndTvShow(this.store.urlBase + this.movie);
             console.log(this.store.results);
+            this.movie = '';
         },
     },
 }
