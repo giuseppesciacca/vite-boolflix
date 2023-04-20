@@ -22,48 +22,52 @@ export default {
                     :alt="result.title ? result.title : result.name">
 
                 <div class="description d-none text-white p-3">
-                    <p><strong>Title:</strong> {{ result.title ? result.title : result.name }}</p>
-                    <p v-if="result.original_title || result.original_name"><strong>Original Title:</strong> {{
-                        result.original_title ?
-                        result.original_title : result.original_name }}</p>
+                    <p><strong>Titolo:</strong> {{ result.title ? result.title : result.name }}</p>
 
-                    <p v-if="result.original_language" class=""><strong>Language:</strong> <img
+                    <p
+                        v-if="result.original_title != result.title || result.original_name != result.name && result.original_title || result.original_name">
+                        <strong>Titolo Originale:</strong> {{
+                            result.original_title ?
+                            result.original_title : result.original_name }}
+                    </p>
+
+                    <p v-if="result.original_language" class=""><strong>Lingua:</strong> <img
                             :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language || result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
                             :alt="result.original_language"></p>
 
                     <!-- VOTI -->
-                    <p v-if="Math.ceil(result.vote_average / 2) == 0"><strong>Vote:</strong>
+                    <p v-if="Math.ceil(result.vote_average / 2) == 0"><strong>Voto:</strong>
                         <i class="fa-regular fa-star" v-for="i in 5"></i>
                     </p>
 
-                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 1"><strong>Vote:</strong>
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 1"><strong>Voto:</strong>
                         <font-awesome-icon :icon="['fas', 'star']" />
                         <font-awesome-icon :icon="['far', 'star']" v-for="i in 4" />
                     </p>
 
-                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 2"><strong>Vote:</strong>
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 2"><strong>Voto:</strong>
                         <font-awesome-icon v-for="i in 2" :icon="['fas', 'star']" />
                         <font-awesome-icon v-for="i in 3" :icon="['far', 'star']" />
                     </p>
 
-                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 3"><strong>Vote:</strong>
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 3"><strong>Voto:</strong>
                         <font-awesome-icon v-for="i in 3" :icon="['fas', 'star']" />
                         <font-awesome-icon v-for="i in 2" :icon="['far', 'star']" />
                     </p>
 
-                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 4"><strong>Vote:</strong>
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 4"><strong>Voto:</strong>
                         <font-awesome-icon v-for="i in 4" :icon="['fas', 'star']" />
                         <font-awesome-icon :icon="['far', 'star']" />
                     </p>
 
-                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Vote:</strong>
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Voto:</strong>
                         <font-awesome-icon v-for="i in 5" :icon="['fas', 'star']" />
                     </p>
 
-                    <p v-else><strong>Vote:</strong> {{ Math.ceil(result.vote_average / 2) }}/5</p>
+                    <p v-else><strong>Voto:</strong> {{ Math.ceil(result.vote_average / 2) }}/5</p>
                     <!-- /VOTI -->
 
-                    <p><strong>Overview:</strong> {{ result.overview }}</p>
+                    <p><strong>Trama:</strong> {{ result.overview }}</p>
                 </div>
             </div>
         </div>
