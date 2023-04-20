@@ -15,58 +15,58 @@ export default {
 
 <template>
     <main>
-        <ol class="text-white">
-            <li class="py-3" v-for="result in this.store.results">
-                <ul>
-                    <li><strong>Title: {{ result.title ? result.title : result.name }}</strong></li>
-                    <li v-if="result.poster_path">
-                        <img :src="urlPathBase + result.poster_path" :alt="result.title ? result.title : result.name">
-                    </li>
+        <div class="row py-3 m-0">
+            <div class="col-4 g-3" v-for="result in this.store.results">
+                <img class="img-fluid card-img" :src="urlPathBase + result.poster_path"
+                    :alt="result.title ? result.title : result.name">
 
-                    <li v-if="result.original_title || result.original_name">Original Title: {{ result.original_title ?
-                        result.original_title : result.original_name }}
-                    </li>
 
-                    <li v-if="result.original_language">Language: <img
+                <div class="d-none description text-white p-3">
+                    <p><strong>Title:</strong> {{ result.title ? result.title : result.name }}</p>
+                    <p v-if="result.original_title || result.original_name"><strong>Original Title:</strong> {{
+                        result.original_title ?
+                        result.original_title : result.original_name }}</p>
+
+                    <p v-if="result.original_language" class=""><strong>Language:</strong> <img
                             :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language || result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
-                            :alt="result.original_language">
-                    </li>
+                            :alt="result.original_language"></p>
 
-
-                    <li v-if="Math.ceil(result.vote_average / 2) == 0">Vote:
+                    <!-- VOTI -->
+                    <p v-if="Math.ceil(result.vote_average / 2) == 0"><strong>Vote:</strong>
                         <i class="fa-regular fa-star" v-for="i in 5"></i>
-                    </li>
+                    </p>
 
-                    <li v-else-if="Math.ceil((result.vote_average) / 2) == 1">Vote:
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 1"><strong>Vote:</strong>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star" v-for="i in 4"></i>
-                    </li>
+                    </p>
 
-                    <li v-else-if="Math.ceil((result.vote_average) / 2) == 2">Vote:
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 2"><strong>Vote:</strong>
                         <i v-for="i in 2" class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star" v-for="i in 3"></i>
-                    </li>
+                    </p>
 
-                    <li v-else-if="Math.ceil((result.vote_average) / 2) == 3">Vote:
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 3"><strong>Vote:</strong>
                         <i v-for="i in 3" class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star" v-for="i in 2"></i>
-                    </li>
+                    </p>
 
-                    <li v-else-if="Math.ceil((result.vote_average) / 2) == 4">Vote:
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 4"><strong>Vote:</strong>
                         <i v-for="i in 4" class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                    </li>
+                    </p>
 
-                    <li v-else-if="Math.ceil((result.vote_average) / 2) == 5">Vote:
+                    <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Vote:</strong>
                         <i v-for="i in 5" class="fa-solid fa-star"></i>
-                    </li>
+                    </p>
 
-                    <li v-else>Vote: {{ Math.ceil(result.vote_average / 2) }}/5</li>
+                    <p v-else><strong>Vote:</strong> {{ Math.ceil(result.vote_average / 2) }}/5</p>
+                    <!-- /VOTI -->
 
-                </ul>
-            </li>
-        </ol>
-
+                    <p><strong>Overview:</strong> {{ result.overview }}</p>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -76,6 +76,27 @@ main {
 
     .fa-star {
         color: orange;
+    }
+
+    .description {
+        background-color: black;
+        height: 100%;
+        border: 2px solid white;
+    }
+
+    .card-img {
+        border: 2px solid white;
+    }
+
+    .card-img:hover,
+    .col-4:hover .card-img {
+        display: none;
+        z-index: 1;
+    }
+
+    .card-img:hover+.description,
+    .col-4:hover .description {
+        display: block !important;
     }
 }
 </style>
