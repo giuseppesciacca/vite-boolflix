@@ -23,10 +23,10 @@ export default {
     <header>
         <div class="nav justify-content-between align-items-center">
             <div class="header_left">
-                <h1 class="p-3 fw-bold">BoolfliX</h1>
+                <h1 class="px-5 fw-bold"><img height="90" src="../assets/img/Netflix-logo-big.png" alt=""></h1>
             </div>
 
-            <div class="header_right pe-3">
+            <div class="header_right pe-5">
                 <input @keyup.enter="searchMovieAndTvShow()" class="m-3" v-model="movie" type="text" name="" id=""
                     placeholder="Search">
             </div>
