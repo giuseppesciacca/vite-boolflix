@@ -38,36 +38,14 @@ export default {
                             :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language && result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
                             :alt="result.original_language"></p>
 
-                    <div v-if="result.vote_average">
-                        <p v-if="Math.ceil(result.vote_average / 2) == 0"><strong>Voto:</strong>
-                            <i class="fa-regular fa-star" v-for="i in 5"></i>
-                        </p>
-
-                        <p v-else-if="Math.ceil((result.vote_average) / 2) == 1"><strong>Voto:</strong>
-                            <font-awesome-icon :icon="['fas', 'star']" />
-                            <font-awesome-icon :icon="['far', 'star']" v-for="i in 4" />
-                        </p>
-
-                        <p v-else-if="Math.ceil((result.vote_average) / 2) == 2"><strong>Voto:</strong>
-                            <font-awesome-icon v-for="i in 2" :icon="['fas', 'star']" />
-                            <font-awesome-icon v-for="i in 3" :icon="['far', 'star']" />
-                        </p>
-
-                        <p v-else-if="Math.ceil((result.vote_average) / 2) == 3"><strong>Voto:</strong>
-                            <font-awesome-icon v-for="i in 3" :icon="['fas', 'star']" />
-                            <font-awesome-icon v-for="i in 2" :icon="['far', 'star']" />
-                        </p>
-
-                        <p v-else-if="Math.ceil((result.vote_average) / 2) == 4"><strong>Voto:</strong>
-                            <font-awesome-icon v-for="i in 4" :icon="['fas', 'star']" />
-                            <font-awesome-icon :icon="['far', 'star']" />
-                        </p>
-
-                        <p v-else-if="Math.ceil((result.vote_average) / 2) == 5"><strong>Voto:</strong>
-                            <font-awesome-icon v-for="i in 5" :icon="['fas', 'star']" />
-                        </p>
-                    </div>
-                    <!-- /VOTI -->
+                    <p v-if="result.vote_average"><strong>Voto:</strong>
+                        <!-- se voto > 0, quindi ha almeno una stella piena, cicla per il numero del voto -->
+                        <font-awesome-icon style="color: #ffa500;" v-if="Math.ceil(result.vote_average / 2) > 0"
+                            :icon="['fas', 'star']" v-for="i in Math.ceil(result.vote_average / 2)" />
+                        <!-- se voto < 5, quindi ha almeno una stella vuota, cicla per 5 meno il numero del voto -->
+                        <font-awesome-icon style="color: #ffa500;" v-if="Math.ceil(result.vote_average / 2) < 5"
+                            :icon="['far', 'star']" v-for="i in (5 - Math.ceil(result.vote_average / 2)) " />
+                    </p>
 
                     <p v-if="result.overview"><strong>Trama:</strong> {{ result.overview }}</p>
                 </div>
@@ -75,7 +53,7 @@ export default {
         </div>
 
         <div v-else>
-            <h2 class="text-center p-5 fw-1">Risultato inesistente</h2>
+            <h2 class="text-center p-5 fw-semibold">Risultato inesistente</h2>
         </div>
     </main>
 </template>
@@ -117,10 +95,6 @@ main {
 
         p {
             margin: 0.5rem;
-
-            .fa-star {
-                color: orange;
-            }
         }
     }
 
