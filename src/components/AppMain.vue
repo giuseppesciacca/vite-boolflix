@@ -21,9 +21,11 @@ export default {
     <main>
         <div v-if="this.store.results.length > 0" class="row py-3 m-0">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
-                <img class="img-fluid card-img" :src="urlPathBase + result.poster_path" s
-                    onerror="this.onerror=null; this.src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'"
+                <img v-if="result.poster_path" class="img-fluid card-img" :src="urlPathBase + result.poster_path"
                     :alt="result.title ? result.title : result.name">
+                <img v-else class="backdrop_path img-fluid card-img" :src="urlPathBase + result.backdrop_path"
+                    :alt="result.title ? result.title : result.name"
+                    onerror="this.onerror=null; this.src= 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'">
 
                 <div class="description d-none text-white p-3">
                     <p><strong>Titolo:</strong> {{ result.title ? result.title : result.name }}</p>
