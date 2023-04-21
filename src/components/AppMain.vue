@@ -19,6 +19,7 @@ export default {
         /**
          * 
          * @param {String} language 
+         * convert some code language in code country
          */
         returnCodeLanguage(language) {
             if (language == 'en') {
@@ -42,7 +43,11 @@ export default {
 
         <div v-if="this.store.results.length > 0 /* && this.store.genresFetched.includes(this.store.idGenreSelected) > 0 */"
             class="row py-3 m-0">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
+
+            <!-- Se all'interno dei risultati in pagina sono presenti film con il genere selezionato allora mostrali, altrimenti display: none -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results"
+                :class="(result.genre_ids.includes(this.store.idGenreSelected) || this.store.idGenreSelected == null) ? 'd-block' : 'd-none'">
+
                 <img v-if="result.poster_path" class="img-fluid card-img" :src="urlPathBase + result.poster_path"
                     :alt="result.title ? result.title : result.name">
                 <img v-else class="backdrop_path img-fluid card-img" :src="urlPathBase + result.backdrop_path"
@@ -76,7 +81,9 @@ export default {
                     <p v-if="result.overview"><strong>Trama:</strong> {{ result.overview }}</p>
                 </div>
             </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
 
         <div v-else>
             <h2 class="text-center p-5 fw-semibold">Risultato inesistente</h2>
