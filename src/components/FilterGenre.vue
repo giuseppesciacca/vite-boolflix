@@ -18,7 +18,7 @@ export default {
 <template>
     <!-- filter by genre -->
     <select @change="this.store.switchGenre" v-model="this.store.idGenreSelected" class="ms-5">
-        <option disabled selected>Select Genre</option>
+        <!--         <option disabled selected>Select Genre</option> -->
         <option :value="genre.id" v-for="genre in this.store.genres">{{ genre.name }}
         </option>
     </select>

@@ -15,6 +15,21 @@ export default {
     components: {
         FilterGenre
     },
+    methods: {
+        /**
+         * 
+         * @param {String} language 
+         */
+        returnCodeLanguage(language) {
+            if (language == 'en') {
+                return 'gb'
+            } else if (language == 'ja') {
+                return 'jp'
+            } else {
+                return language
+            }
+        }
+    },
     mounted() {
         this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
     }
@@ -23,10 +38,10 @@ export default {
 
 <template>
     <main>
-        <!-- filter by genre -->
         <FilterGenre />
 
-        <div v-if="this.store.results.length > 0" class="row py-3 m-0">
+        <div v-if="this.store.results.length > 0 /* && this.store.genresFetched.includes(this.store.idGenreSelected) > 0 */"
+            class="row py-3 m-0">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
                 <img v-if="result.poster_path" class="img-fluid card-img" :src="urlPathBase + result.poster_path"
                     :alt="result.title ? result.title : result.name">
@@ -45,8 +60,9 @@ export default {
                     </p>
 
                     <p v-if="result.original_language"><strong>Lingua:</strong> <img
-                            :src="this.urlFlag + `${result.original_language == 'en' ? 'gb' : result.original_language && result.original_language == 'ja' ? 'jp' : result.original_language}.png`"
-                            :alt="result.original_language"></p>
+                            :src="`${this.urlFlag + this.returnCodeLanguage(result.original_language)}.png`"
+                            :alt="result.original_language">
+                    </p>
 
                     <p v-if="result.vote_average"><strong>Voto:</strong>
                         <!-- se voto > 0, quindi ha almeno una stella piena, cicla per il numero del voto -->
