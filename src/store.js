@@ -5,6 +5,8 @@ export const store = reactive({
     urlBase: 'https://api.themoviedb.org/3/search/multi?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&include_adult=false&sort_by=popularity.desc&query=',
     results: [],
     genres: [],
+    idGenreSelected: null,
+    urlGenre: 'https://api.themoviedb.org/3/genre/movie/list?api_key=aa7ff67870b167647ae7e4a3d1b611a3',
     fetchMoviesAndTvShow(url) {
         axios
             .get(url)
@@ -27,4 +29,7 @@ export const store = reactive({
                 console.error(error.message);
             })
     },
+    switchGenre() {
+        console.log(this.idGenreSelected);
+    }
 })

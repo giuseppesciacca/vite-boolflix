@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store.js';
+import FilterGenre from './FilterGenre.vue';
 
 export default {
     name: 'AppMain',
@@ -11,14 +12,20 @@ export default {
             urlDiscovery: 'https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
         }
     },
+    components: {
+        FilterGenre
+    },
     mounted() {
-        this.store.fetchMoviesAndTvShow(this.urlDiscovery) //initial page 'discovery' ordered by popularity desc.
+        this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
     }
 }
 </script>
 
 <template>
     <main>
+        <!-- filter by genre -->
+        <FilterGenre />
+
         <div v-if="this.store.results.length > 0" class="row py-3 m-0">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results">
                 <img v-if="result.poster_path" class="img-fluid card-img" :src="urlPathBase + result.poster_path"
