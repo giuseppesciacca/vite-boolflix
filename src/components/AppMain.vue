@@ -33,8 +33,10 @@ export default {
     },
     mounted() {
         this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
+        this.store.fetchGenres(this.store.urlGenre); //create a list of genre
     }
 }
+
 </script>
 
 <template>

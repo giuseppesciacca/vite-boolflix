@@ -7,6 +7,11 @@ export const store = reactive({
     genres: [],
     idGenreSelected: null,
     urlGenre: 'https://api.themoviedb.org/3/genre/movie/list?api_key=aa7ff67870b167647ae7e4a3d1b611a3',
+    /**
+     * 
+     * @param {String} url 
+     * add the array with movie, tvshow and people in results=[].
+     */
     fetchMoviesAndTvShow(url) {
         axios
             .get(url)
@@ -18,6 +23,11 @@ export const store = reactive({
                 console.error(error.message);
             })
     },
+    /**
+     * 
+     * @param {String} url 
+     * add the array with id and name in genres=[].
+     */
     fetchGenres(url) {
         axios
             .get(url)
@@ -28,8 +38,5 @@ export const store = reactive({
             }).catch(error => {
                 console.error(error.message);
             })
-    },
-    switchGenre() {
-        console.log(this.idGenreSelected);
     }
 })
