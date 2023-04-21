@@ -62,11 +62,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../assets/sass/partials/variables.scss' as *;
+
 main {
-    background-color: #434343;
+    background-color: $color_primary;
 
     h2 {
-        color: red;
+        color: $color_secondary;
     }
 
     [class^="col"] {
@@ -74,7 +76,7 @@ main {
     }
 
     .card-img {
-        border: 2px solid white;
+        border: 2px solid $color_lighter;
         height: 100%;
         object-fit: cover;
     }
@@ -91,9 +93,9 @@ main {
     }
 
     .description {
-        background-color: black;
+        background-color: $color_darker;
         height: 100%;
-        border: 2px solid white;
+        border: 2px solid $color_lighter;
         overflow-y: auto;
 
         p {

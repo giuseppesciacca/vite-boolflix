@@ -23,9 +23,29 @@ export default {
 <template>
     <header>
         <div class="nav justify-content-between align-items-center">
-            <div class="header_left">
+            <div class="header_left d-flex ">
                 <img class="ps-5 d-none d-sm-block" height="90" src="../assets/img/Netflix-logo-big.png" alt="">
-                <img class="ps-3 d-sm-none" height="90" src="../assets/img/Netflix-logo-small.png" alt="">
+                <img class="ps-3 d-sm-none" height="70" src="../assets/img/Netflix-logo-small.png" alt="">
+                <ul class="navbar m-0">
+                    <li class="nav-item active">
+                        <a class="px-3 d-none d-xl-block" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="px-3 d-none d-xl-block" href="#">Serie TV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="px-3 d-none d-xl-block" href="#">Film</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="px-3 d-none d-xl-block" href="#">Originali</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="px-3 d-none d-xl-block" href="#">Aggiunti di recente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="d-none d-xl-block" href="#">La mia lista</a>
+                    </li>
+                </ul>
             </div>
 
             <div class="header_right pe-3 pe-sm-5">
@@ -38,12 +58,29 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../assets/sass/partials/variables.scss' as *;
+
 header {
-    background-color: black;
+    background-color: $color_primary;
     height: 90px;
 
-    h1 {
-        color: red;
+    ul {
+        list-style: none;
+
+        a {
+            color: $color_text;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: $color_lighter
+        }
+    }
+
+    .active a {
+
+        color: $color_lighter;
+        font-weight: bold;
     }
 }
 </style>
