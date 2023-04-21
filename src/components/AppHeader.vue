@@ -43,7 +43,7 @@ export default {
                         <a class="px-3 d-none d-xl-block" href="#">Aggiunti di recente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-none d-xl-block" href="#">La mia lista</a>
+                        <a class="px-3 d-none d-xl-block" href="#">La mia lista</a>
                     </li>
                 </ul>
             </div>

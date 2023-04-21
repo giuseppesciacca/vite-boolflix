@@ -1,5 +1,6 @@
 @use '/node_modules/bootstrap/scss/bootstrap.scss';
+@use './partials/variables.scss' as *;
 
 body {
-    background-color: #434343;
+    background-color: $color_primary;
 }
