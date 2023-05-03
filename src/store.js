@@ -30,9 +30,23 @@ export const store = reactive({
      * 
      * @param {number} id_movies 
      */
-    fetchCast(id_movies) {
+    fetchCastMovie(id_movies) {
         axios
             .get(`https://api.themoviedb.org/3/movie/${id_movies}/credits?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT`)
+            .then(response => {
+                //console.log(response);
+                this.cast = response.data.cast;
+                //console.log(this.cast);
+            })
+    },
+    /**
+     * 
+     * @param {number} id_movies 
+     */
+    fetchCastTvShow(id_movies) {
+        axios
+            .get(`https://api.themoviedb.org/3/tv/${id_movies}/credits?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT`
+            )
             .then(response => {
                 //console.log(response);
                 this.cast = response.data.cast;

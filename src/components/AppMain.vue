@@ -65,6 +65,21 @@ export default {
                 return genreId
             }
         },
+        /**
+         * 
+         * @param {String} mediaType 
+         * @param {number} id_movies 
+         * @returns function that fetch cast movie or tv 
+         */
+        fetchCastTvOrMovie(mediaType, id_movies) {
+            //console.log(mediaType);
+            //console.log(id_movies);
+            if (mediaType == "movie") {
+                return this.store.fetchCastMovie(id_movies)
+            } else {
+                return this.store.fetchCastTvShow(id_movies)
+            }
+        }
     },
     mounted() {
         this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
@@ -82,7 +97,7 @@ export default {
             class="row py-3 m-0">
 
             <!-- Se all'interno dei risultati in pagina sono presenti film con il genere selezionato allora mostrali, altrimenti display: none -->
-            <div @mouseenter="store.fetchCast(result.id)" @mouseleave="clearCast()"
+            <div @mouseenter="fetchCastTvOrMovie(result.title ? 'movie' : 'tv', result.id)" @mouseleave="clearCast()"
                 class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results"
                 :class="(result.genre_ids.includes(this.store.idGenreSelected) || this.store.idGenreSelected == null) ? 'd-block' : 'd-none'">
 
