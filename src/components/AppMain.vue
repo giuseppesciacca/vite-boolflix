@@ -53,7 +53,17 @@ export default {
         convertGenreIds(genreId) {
             //prendo la posizione dell'id del genere per poi ricavarne il nome
             let index = this.store.genres.findIndex((val) => { return val.id == genreId })
-            return this.store.genres[index].name
+            let indexTV = this.store.genreOnlyTvShow.findIndex((val) => { return val.id == genreId })
+
+            if (this.store.genres[index]) {
+                let name = this.store.genres[index].name
+                return name
+            } else if (this.store.genreOnlyTvShow[indexTV]) {
+                let name = this.store.genreOnlyTvShow[indexTV].name
+                return name
+            } else {
+                return genreId
+            }
         },
     },
     mounted() {
