@@ -6,7 +6,7 @@ export const store = reactive({
     results: [],
     genres: [],
     idGenreSelected: null,
-    urlGenre: 'https://api.themoviedb.org/3/genre/movie/list?api_key=aa7ff67870b167647ae7e4a3d1b611a3',
+    urlGenre: 'https://api.themoviedb.org/3/genre/movie/list?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT',
     cast: [],
     /**
      * 
