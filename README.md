@@ -10,7 +10,7 @@ Creazione di un layout completo simil-Netflix con:
 
 - Dopo aver ricercato qualcosa nella searchbar, i risultati appaiono sotto forma di “card” in cui lo sfondo è rappresentato dall’immagine di copertina;
 
-- Andando con il mouse sopra una card (on hover), appaiono le seguenti informazioni: 1. Titolo 2. Titolo Originale (se diverso dal titolo) 3. Lingua 4. Voto 5. Genere 6. Cast;
+- Andando con il mouse sopra una card (on hover), appaiono le seguenti informazioni: 1. Titolo 2. Titolo Originale (se diverso dal titolo) 3. Lingua 4. Voto 5. Trama 6. Genere 7. Cast;
 
 - Trasformazione della stringa statica della lingua in una vera e propria bandiera della nazione corrispondente;
 
