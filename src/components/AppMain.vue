@@ -19,7 +19,7 @@ export default {
         /**
          * 
          * @param {String} language 
-         * convert some code language in code country
+         * @returns some code language in code country
          */
         returnCodeLanguage(language) {
             if (language == 'en') {
@@ -30,12 +30,21 @@ export default {
                 return language
             }
         },
-        maxCast(index) {
-            if (store.cast[index].length >= 5) {
+        /**
+         * @returns Num max cast at 5
+         */
+        maxCast() {
+            if (store.cast.length >= 5) {
                 return 5
             } else {
-                return store.cast[index].length
+                return store.cast.length
             }
+        },
+        /**
+         * on mouseleave of the column, cast array is empty
+         */
+        clearCast() {
+            store.cast = [];
         }
     },
     mounted() {
@@ -54,7 +63,8 @@ export default {
             class="row py-3 m-0">
 
             <!-- Se all'interno dei risultati in pagina sono presenti film con il genere selezionato allora mostrali, altrimenti display: none -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="(result, index) in this.store.results"
+            <div @mouseenter="store.fetchCast(result.id)" @mouseleave="clearCast()"
+                class="col-12 col-sm-6 col-md-4 col-lg-3 g-3" v-for="result in this.store.results"
                 :class="(result.genre_ids.includes(this.store.idGenreSelected) || this.store.idGenreSelected == null) ? 'd-block' : 'd-none'">
 
                 <img v-if="result.poster_path" class="img-fluid card-img" :src="urlPathBase + result.poster_path"
@@ -89,10 +99,11 @@ export default {
 
                     <p v-if="result.overview"><strong>Trama:</strong> {{ result.overview }}</p>
 
-                    <p v-if="store.cast.length > 0">Cast:</p>
-                    <ul v-if="store.cast.length > 0">
-                        <li v-for="n in maxCast(index)"> {{ store.cast[index][n - 1].name }} </li>
+                    <p v-if="store.cast.length > 0">Cast:
+                    <ul>
+                        <li v-for="n in maxCast()"> {{ store.cast[n - 1].name }} </li>
                     </ul>
+                    </p>
                 </div>
             </div>
             <!-- /.col -->
