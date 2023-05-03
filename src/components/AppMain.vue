@@ -9,7 +9,6 @@ export default {
             store,
             urlFlag: 'https://flagcdn.com/20x15/',
             urlPathBase: 'https://image.tmdb.org/t/p/w342/',
-            urlDiscovery: 'https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
         }
     },
     components: {
@@ -82,7 +81,7 @@ export default {
         }
     },
     mounted() {
-        this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
+        this.store.fetchMoviesAndTvShow(this.store.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
         this.store.fetchGenres(this.store.urlGenre); //create a list of genre
     }
 }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import genreOnlyTvShow from './assets/data/genre_only_tvshows.json';
 
 export const store = reactive({
+    urlDiscovery: 'https://api.themoviedb.org/3/discover/movie?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate',
     urlBase: 'https://api.themoviedb.org/3/search/multi?api_key=aa7ff67870b167647ae7e4a3d1b611a3&language=it-IT&include_adult=false&sort_by=popularity.desc&query=',
     results: [],
     genres: [],

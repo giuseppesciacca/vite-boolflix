@@ -24,10 +24,12 @@ export default {
     <header>
         <div class="nav justify-content-between align-items-center">
             <div class="header_left d-flex ">
-                <img class="ps-5 d-none d-sm-block" height="90" src="../assets/img/Netflix-logo-big.png" alt="">
-                <img class="ps-3 d-sm-none" height="70" src="../assets/img/Netflix-logo-small.png" alt="">
+                <img @click="store.fetchMoviesAndTvShow(store.urlDiscovery)" class="ps-5 d-none d-sm-block" height="90"
+                    src="../assets/img/Netflix-logo-big.png" alt="">
+                <img @click="store.fetchMoviesAndTvShow(store.urlDiscovery)" class="ps-3 d-sm-none" height="70"
+                    src="../assets/img/Netflix-logo-small.png" alt="">
                 <ul class="navbar m-0">
-                    <li class="nav-item active">
+                    <li class="nav-item active" @click="store.fetchMoviesAndTvShow(store.urlDiscovery)">
                         <a class="px-3 d-none d-xl-block" href="#">Home</a>
                     </li>
                     <li class="nav-item">
@@ -63,6 +65,10 @@ export default {
 header {
     background-color: $color_primary;
     height: 90px;
+
+    img {
+        cursor: pointer;
+    }
 
     ul {
         list-style: none;
