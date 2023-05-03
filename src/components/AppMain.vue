@@ -45,7 +45,16 @@ export default {
          */
         clearCast() {
             store.cast = [];
-        }
+        },
+        /**
+         * 
+         * @param {number} genreId 
+         */
+        convertGenreIds(genreId) {
+            //prendo la posizione dell'id del genere per poi ricavarne il nome
+            let index = this.store.genres.findIndex((val) => { return val.id == genreId })
+            return this.store.genres[index].name
+        },
     },
     mounted() {
         this.store.fetchMoviesAndTvShow(this.urlDiscovery); //initial page 'discovery' ordered by popularity desc.
@@ -98,6 +107,10 @@ export default {
                     </p>
 
                     <p v-if="result.overview"><strong>Trama:</strong> {{ result.overview }}</p>
+
+                    <p v-if="result.genre_ids.length > 0">Genere:
+                        <span v-for="genre in result.genre_ids">{{ this.convertGenreIds(genre) + ' ' }} </span>
+                    </p>
 
                     <p v-if="store.cast.length > 0">Cast:
                     <ul>

@@ -49,6 +49,7 @@ export const store = reactive({
                 //console.log(response.data);
                 //console.log(response.data.genres);
                 this.genres = response.data.genres; //array with id and name
+                //console.log(this.genres);
             }).catch(error => {
                 console.error(error.message);
             })
